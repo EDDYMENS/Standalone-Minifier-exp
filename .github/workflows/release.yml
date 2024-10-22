@@ -2,6 +2,8 @@ name: Build and Release Binaries
 
 on:
   push:
+    branches:
+        - release-fix
     tags:
       - 'v*'
 permissions:
@@ -56,7 +58,7 @@ jobs:
           path: ./bin
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v2
         with:
           files: |
             ./bin/minifier-linux
