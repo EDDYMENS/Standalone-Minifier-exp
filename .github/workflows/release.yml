@@ -41,10 +41,16 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifacts from build jobs
+      - name: Download Linux artifact
         uses: actions/download-artifact@v3
         with:
           name: minifier-ubuntu-latest
+          path: ./bin
+
+      - name: Download macOS artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: minifier-macos-latest
           path: ./bin
 
       - name: Create GitHub release
@@ -55,3 +61,6 @@ jobs:
             ./bin/minifier-darwin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log release URL
+        run: echo "Release created at ${{ steps.create_release.outputs.html_url }}"
