@@ -1,4 +1,4 @@
-# Standalone Minifier 
+# Standalone Minifier (exp)
 
 > Personal use: To minify JavaScript for my static blog site.
 
